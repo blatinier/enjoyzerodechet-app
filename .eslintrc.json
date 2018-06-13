@@ -1,0 +1,42 @@
+{
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "env": {
+    "node": true,
+    "es6": true,
+    "react-native/react-native": true
+  },
+  "rules": {
+    "arrow-parens": ["error", "always"],
+    "curly": ["error", "all"],
+    "import/prefer-default-export": "off",
+    "indent": ["error", 4, { "SwitchCase": 1 }],
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }],
+    "max-len": ["warn", 120],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 0, "maxEOF": 0 }],
+    "no-plusplus": "off",
+    "no-restricted-syntax": ["error", "ForInStatement",  "LabeledStatement", "WithStatement"],
+    "object-curly-newline": "off",
+    "padding-line-between-statements": ["error", { "blankLine": "always", "prev": "*", "next": "return" }],
+    "react/jsx-filename-extension": "off",
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/require-default-props": "off",
+    "react-native/no-unused-styles": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/split-platform-components": 2,
+    "yoda": ["error", "always", { "onlyEquality": true }]
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "globals": {
+    "fetch": false
+  }
+}

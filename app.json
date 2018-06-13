@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "Enjoy Zero Déchet",
+    "sdkVersion": "27.0.0",
+    "version": "1.0.0",
+    "slug": "enjoy-zero-dechet",
+    "androidStatusBarColor": "#dddddd",
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#dddddd"
+    },
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#dddddd"
+    },
+    "icon": "./assets/icon.png",
+    "platforms": ["ios", "android"],
+    "orientation": "portrait",
+    "privacy": "unlisted",
+    "android": {
+      "package": "fr.enjoyzerodechet.app"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "fr.enjoyzerodechet.app",
+      "supportsTablet": true
+    }
+  }
+}
