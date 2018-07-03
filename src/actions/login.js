@@ -13,7 +13,7 @@ export const loadResponseFromLogin = ({ login, password }) => async (dispatch) =
         headers: {
             Accept: 'application/json',
             'Content-type': 'application/json',
-            Authorization: `Basic ${auth}`
+            Authorization: `Basic ${auth}`,
         },
         method: 'POST',
     });

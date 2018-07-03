@@ -99,15 +99,15 @@ const Login = flowRight(
         onSubmitSuccess: (result, dispatch, { navigation, t }) => {
             if (result) {
                 return navigation.push('CardsList');
-            } else {
-                return Toast.show({
-                    text: errorMessage(result, t),
-                    buttonText: 'Ok',
-                    buttonTextStyle: { color: colors.white },
-                    buttonStyle: { backgroundColor: colors.green },
-                    duration: 15000,
-                });
             }
+
+            return Toast.show({
+                text: errorMessage(result, t),
+                buttonText: 'Ok',
+                buttonTextStyle: { color: colors.white },
+                buttonStyle: { backgroundColor: colors.green },
+                duration: 15000,
+            });
         },
     }),
 )(LoginInner);
