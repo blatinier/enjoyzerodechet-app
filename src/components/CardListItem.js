@@ -15,7 +15,7 @@ const CardListItem = ({ card: { title } }) => (
 
 CardListItem.propTypes = {
     card: PropTypes.shape({
-        title: PropTypes.string,
+        title: PropTypes.string.required,
     }),
 };
 

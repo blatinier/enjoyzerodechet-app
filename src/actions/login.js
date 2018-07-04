@@ -19,7 +19,7 @@ export const loadResponseFromLogin = ({ login, password }) => async (dispatch) =
     });
     if (response.ok) {
         const { token } = await response.json();
-        dispatch(setLoginState(true, token));
+        dispatch(setLoginState(true, token, login, password));
     }
 
     return response.ok;

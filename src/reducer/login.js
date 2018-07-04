@@ -1,4 +1,4 @@
-const defaultState = { loggedIn: null };
+const defaultState = { loggedIn: null, login: null, password: null, token: null };
 
 const login = (state = defaultState, { type, ...payload }) => {
     switch (type) {

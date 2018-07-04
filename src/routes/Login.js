@@ -51,6 +51,7 @@ const LoginInner = ({ handleSubmit, t }) => (
                     name="login"
                     placeholder={t('login')}
                     returnKeyType="next"
+                    keyboardType="email-address"
                     // eslint-disable-next-line no-underscore-dangle
                     onSubmitEditing={() => this.passwordInput._root.focus()}
                     placeholderTextColor={colors.darkGray}
