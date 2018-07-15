@@ -51,6 +51,7 @@ const LoginInner = ({ handleSubmit, t }) => (
                     name="login"
                     placeholder={t('login')}
                     returnKeyType="next"
+                    keyboardType="email-address"
                     // eslint-disable-next-line no-underscore-dangle
                     onSubmitEditing={() => this.passwordInput._root.focus()}
                     placeholderTextColor={colors.darkGray}
@@ -96,15 +97,19 @@ const Login = flowRight(
     reduxForm({
         form: 'login',
         onSubmit: (values, dispatch) => dispatch(loadResponseFromLogin(values)),
-        onSubmitSuccess: (result, dispatch, { navigation, t }) => ((200 === result)
-            ? navigation.push('CardsList')
-            : Toast.show({
+        onSubmitSuccess: (result, dispatch, { navigation, t }) => {
+            if (result) {
+                return navigation.push('CardsList');
+            }
+
+            return Toast.show({
                 text: errorMessage(result, t),
                 buttonText: 'Ok',
                 buttonTextStyle: { color: colors.white },
                 buttonStyle: { backgroundColor: colors.green },
                 duration: 15000,
-            })),
+            });
+        },
     }),
 )(LoginInner);
 

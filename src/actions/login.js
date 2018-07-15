@@ -1,28 +1,30 @@
 import { BACKEND_URL } from 'react-native-dotenv';
+import base64 from 'base-64';
 
-export const setLoginState = (loggedIn) => ({
+export const setLoginState = (loggedIn, token) => ({
     type: 'LOGIN_SET',
     loggedIn,
+    token,
 });
 
-export const loadResponseFromLogin = (credentials) => async (dispatch) => {
-    const response = await fetch(`${BACKEND_URL}login`, {
-        body: JSON.stringify(credentials),
+export const loadResponseFromLogin = ({ login, password }) => async (dispatch) => {
+    const auth = base64.encode(`${login}:${password}`);
+    const response = await fetch(`${BACKEND_URL}/api/v1/users/login/`, {
         headers: {
+            Accept: 'application/json',
             'Content-type': 'application/json',
+            Authorization: `Basic ${auth}`,
         },
-        credentials: 'include',
         method: 'POST',
     });
-    dispatch(setLoginState(response.ok));
+    if (response.ok) {
+        const { token } = await response.json();
+        dispatch(setLoginState(true, token, login, password));
+    }
 
-    return response.status;
+    return response.ok;
 };
 
 export const logout = () => async (dispatch) => {
-    await fetch(`${BACKEND_URL}logout`, {
-        credentials: 'include',
-        method: 'GET',
-    });
-    await dispatch(setLoginState(false));
+    await dispatch(setLoginState(false, null));
 };
