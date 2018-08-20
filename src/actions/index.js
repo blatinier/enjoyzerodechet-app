@@ -1,4 +1,4 @@
 export * from './loading';
-export * from './login';
 export * from './locale';
 export * from './cards';
+export * from './welcome';

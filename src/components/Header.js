@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Platform } from 'react-native';
-import { Header as NativeHeader, Left, Button, Icon, Body, Title, Right } from 'native-base';
+import { Header as NativeHeader, Left, Button, Icon, Body, Title } from 'native-base';
 import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 import { headerStyle, iconStyle } from '../theme/containerStyle';
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     icon: iconStyle,
 });
 
-const HeaderInner = ({ title, returnButton, settingsButton, navigation: { push, pop } }) => (
+const HeaderInner = ({ title, returnButton, navigation: { pop } }) => (
     <NativeHeader style={styles.header} iosBarStyle="light-content" androidStatusBarColor={colors.black}>
         <Left>
             {'ios' === Platform.OS && returnButton ?
@@ -31,26 +31,14 @@ const HeaderInner = ({ title, returnButton, settingsButton, navigation: { push, 
                 {title || ''}
             </Title>
         </Body>
-        <Right>
-            {settingsButton ?
-                <Button
-                    transparent
-                    onPress={() => push('Settings')}
-                >
-                    <Icon name="settings" style={styles.icon} />
-                </Button> : null
-            }
-        </Right>
     </NativeHeader>
 );
 
 HeaderInner.propTypes = {
     title: PropTypes.string,
     returnButton: PropTypes.bool,
-    settingsButton: PropTypes.bool,
     navigation: PropTypes.shape({
         pop: PropTypes.func,
-        push: PropTypes.func,
     }),
 };
 

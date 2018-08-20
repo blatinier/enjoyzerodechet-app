@@ -7,7 +7,7 @@ import LoadingScreen from './LoadingScreen';
 
 const HomeInner = () => <LoadingScreen />;
 
-const mapStateToProps = ({ login: { loggedIn } }) => ({ loggedIn });
+const mapStateToProps = ({ welcome: { firstTimer } }) => ({ firstTimer });
 
 const Home = flowRight(
     connect(mapStateToProps),
@@ -15,7 +15,7 @@ const Home = flowRight(
         componentDidMount() {
             const homeAction = StackActions.reset({
                 index: 0,
-                actions: [NavigationActions.navigate({ routeName: this.props.loggedIn ? 'CardsList' : 'Login' })],
+                actions: [NavigationActions.navigate({ routeName: this.props.firstTimer ? 'Welcome' : 'CardsList' })],
             });
             this.props.navigation.dispatch(homeAction);
         },
