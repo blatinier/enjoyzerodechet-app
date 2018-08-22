@@ -1,6 +1,5 @@
 export default {
-    primary: '',
-    green: '#B9E5D2',
+    primary: '#B4FFF8',
     darkGray: '#8b8c85',
     white: '#ffffff',
     mediumGray: '#ababa5',

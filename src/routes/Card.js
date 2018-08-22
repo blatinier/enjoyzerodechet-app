@@ -41,7 +41,7 @@ export default flowRight(
     connect(mapStateToProps, mapDispatchToProps),
     lifecycle({
         async componentDidMount() {
-            await this.props.setCard(this.props.navigation.getParam('id'));
+            await this.props.setCard(this.props.navigation.getParam('slug'));
         },
     }),
     withTranslation,

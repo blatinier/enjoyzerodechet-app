@@ -8,7 +8,7 @@ import colors from '../theme/colors';
 const styles = StyleSheet.create({
     container: {
         ...containerStyle,
-        backgroundColor: colors.green,
+        backgroundColor: colors.primary,
     },
 });
 

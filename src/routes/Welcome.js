@@ -11,40 +11,54 @@ import { readWelcomeMsg } from '../actions';
 const styles = StyleSheet.create({
     container: {
         ...containerStyle,
-        backgroundColor: colors.green,
+        backgroundColor: colors.primary,
+    },
+    welcomeTitle: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        marginBottom: 30,
     },
     welcomeNotice: {
-        width: 250,
+        width: 280,
         textAlign: 'center',
     },
-    welcomeButton: {
+    welcomeButtonView: {
         height: 40,
         width: 250,
-        marginTop: 10,
+        marginTop: 30,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    welcomeButton: {
+        borderColor: colors.darkGray,
+    },
+    buttonText: {
+        color: colors.darkGray,
     },
 });
 
 const WelcomeScreen = ({ navigation: { push } }) => (
     <Container style={styles.container}>
         <Logo />
-        <Text style={styles.welcomeNotice}>
-            Enjoy Zero Déchet vous aide à cheminer vers un mode de vie zéro déchet.
-            On vous propose plein de petits gestes pour y arriver à votre rythme.
+        <Text style={styles.welcomeTitle}>
+            ENJOY ZÉRO DÉCHET
         </Text>
-        <View style={styles.welcomeButton}>
+        <Text style={styles.welcomeNotice}>
+            Une application ludique pour cheminer avec plaisir vers le zéro déchet !
+        </Text>
+        <View style={styles.welcomeButtonView}>
             <Button
                 block
                 rounded
                 bordered
                 light
+                style={styles.welcomeButton}
                 onPress={() => {
                     readWelcomeMsg();
                     push('CardsList');
                 }}
             >
-                <Text>On y va ?</Text>
+                <Text style={styles.buttonText}>On y va ?</Text>
             </Button>
         </View>
     </Container>
