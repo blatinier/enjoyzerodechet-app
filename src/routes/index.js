@@ -1,14 +1,16 @@
 import { createStackNavigator } from 'react-navigation';
 import Welcome from './Welcome';
 import Home from './Home';
-import CardsList from './CardsList';
+import Category from './Category';
+import CategoriesList from './CategoriesList';
 
 export const DrawerNavigator = null;
 
 export const AppNavigator = createStackNavigator({
     Welcome: { screen: Welcome },
     Home: { screen: Home },
-    CardsList: { screen: CardsList },
+    CategoriesList: { screen: CategoriesList },
+    Category: { screen: Category },
 }, {
     initialRouteName: 'Home',
     navigationOptions: {

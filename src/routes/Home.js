@@ -15,7 +15,7 @@ const Home = flowRight(
         componentDidMount() {
             const homeAction = StackActions.reset({
                 index: 0,
-                actions: [NavigationActions.navigate({ routeName: this.props.firstTimer ? 'Welcome' : 'CardsList' })],
+                actions: [NavigationActions.navigate({ routeName: this.props.firstTimer ? 'Welcome' : 'CategoriesList' })],
             });
             this.props.navigation.dispatch(homeAction);
         },

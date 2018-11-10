@@ -1,4 +1,4 @@
-import { flowRight, map } from 'lodash';
+import { flowRight, groupBy, keys, map } from 'lodash';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import { lifecycle } from 'recompose';
 import { Content, List, Spinner } from 'native-base';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
-import CardListItem from '../components/CardListItem';
+import Category from '../components/Category';
 import ProgressHummingBird from '../components/ProgressHummingBird';
 import colors from '../theme/colors';
 import withTranslation from '../i18n';
@@ -25,27 +25,31 @@ const styles = StyleSheet.create({
     },
 });
 
-const CardsList = ({ cards, t }) => (
-    <Layout title={t('cards')}>
-        <Content style={styles.container}>
-            <View style={styles.progress}>
-                <ProgressHummingBird percent={63} />
-            </View>
-            <List>
-                { null === cards || !cards.results ? <Spinner /> :
-                    map(cards.results, ({ title, slug }) => (
-                        <CardListItem
-                            key={slug}
-                            slug={slug}
-                            title={title}
-                        />
-                    ))}
-            </List>
-        </Content>
-    </Layout>
-);
+const CategoriesList = ({ cards, t }) => {
+    const categories = cards.results ? groupBy(cards.results, 'category') : [];
 
-CardsList.propTypes = {
+    return (
+        <Layout title={t('cards')}>
+            <Content style={styles.container}>
+                <View style={styles.progress}>
+                    <ProgressHummingBird percent={63} />
+                </View>
+                <List>
+                    { categories ?
+                        map(keys(categories), (category) => (
+                            <Category
+                                key={category}
+                                category={category}
+                                totalCards={categories[category].length}
+                            />
+                        )) : <Spinner />}
+                </List>
+            </Content>
+        </Layout>
+    );
+};
+
+CategoriesList.propTypes = {
     cards: PropTypes.shape({}),
     t: PropTypes.func,
 };
@@ -62,4 +66,4 @@ export default flowRight(
         },
     }),
     withTranslation,
-)(CardsList);
+)(CategoriesList);

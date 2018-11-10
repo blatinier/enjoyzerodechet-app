@@ -55,7 +55,7 @@ const WelcomeScreen = ({ navigation: { push } }) => (
                 style={styles.welcomeButton}
                 onPress={() => {
                     readWelcomeMsg();
-                    push('CardsList');
+                    push('CategoriesList');
                 }}
             >
                 <Text style={styles.buttonText}>On y va ?</Text>
