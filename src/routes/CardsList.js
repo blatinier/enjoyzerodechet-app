@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Content, List, Spinner } from 'native-base';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
-import Card from '../components/Card';
+import CardListItem from '../components/CardListItem';
 import ProgressHummingBird from '../components/ProgressHummingBird';
 import colors from '../theme/colors';
 import withTranslation from '../i18n';
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
 });
 
-const Category = ({
+const CardsList = ({
     cards,
     navigation: {
         state: {
@@ -34,9 +34,6 @@ const Category = ({
     },
     t }) => {
     const categories = cards.results ? groupBy(cards.results, 'category') : [];
-    console.log("MERDE MERDEMERDEMERDEMERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE MERDE    ");
-    console.log(categories[category]);
-    console.log(map(categories[category], (card) => ({ slug: card.slug, title: card.title })));
 
     return (
         <Layout title={t('cards')}>
@@ -47,7 +44,7 @@ const Category = ({
                 <List>
                     { categories && categories[category] ?
                         map(categories[category], (card) => (
-                            <Card
+                            <CardListItem
                                 key={card.slug}
                                 name={card.title}
                                 card={card}
@@ -59,8 +56,15 @@ const Category = ({
     );
 };
 
-Category.propTypes = {
+CardsList.propTypes = {
     cards: PropTypes.shape({}),
+    navigation: PropTypes.shape({
+        state: PropTypes.shape({
+            params: PropTypes.shape({
+                category: PropTypes.string.isRequired,
+            }),
+        }),
+    }),
     t: PropTypes.func,
 };
 
@@ -69,4 +73,4 @@ const mapStateToProps = ({ cards }) => ({ cards });
 export default flowRight(
     connect(mapStateToProps),
     withTranslation,
-)(Category);
+)(CardsList);

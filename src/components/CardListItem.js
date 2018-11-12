@@ -1,28 +1,18 @@
 import React from 'react';
-import { withNavigation } from 'react-navigation';
-import { Body, Icon, ListItem, Right, Text } from 'native-base';
+import { Body, ListItem, Text } from 'native-base';
 import PropTypes from 'prop-types';
 
-const CardListItem = ({ slug, title, navigation: { push } }) => (
-    <ListItem
-        onPress={() => push('Card', { slug })}
-        icon
-    >
+const CardListItem = ({ name, card }) => (
+    <ListItem>
         <Body>
-            <Text>{title}</Text>
+            <Text>{name}</Text>
         </Body>
-        <Right>
-            <Icon name="arrow-forward" />
-        </Right>
     </ListItem>
 );
 
 CardListItem.propTypes = {
-    slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    navigation: PropTypes.shape({
-        push: PropTypes.func,
-    }),
+    card: PropTypes.shape({}),
+    name: PropTypes.string.isRequired,
 };
 
-export default withNavigation(CardListItem);
+export default CardListItem;

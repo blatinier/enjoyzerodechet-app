@@ -6,7 +6,7 @@ import { lifecycle } from 'recompose';
 import { Content, List, Spinner } from 'native-base';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
-import Category from '../components/Category';
+import CategoryListItem from '../components/CategoryListItem';
 import ProgressHummingBird from '../components/ProgressHummingBird';
 import colors from '../theme/colors';
 import withTranslation from '../i18n';
@@ -37,7 +37,7 @@ const CategoriesList = ({ cards, t }) => {
                 <List>
                     { categories ?
                         map(keys(categories), (category) => (
-                            <Category
+                            <CategoryListItem
                                 key={category}
                                 category={category}
                                 totalCards={categories[category].length}
